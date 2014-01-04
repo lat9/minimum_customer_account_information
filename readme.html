@@ -1,0 +1,200 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>Minimum Customer Account Information (Zen-Cart 1.5.0, v1.5.1, v1.5.2)</title>
+
+<style type="text/css">
+<!--
+a, a:active, a:visited {
+  color: #006666;
+  text-decoration: none
+}
+a:hover {
+    color:#00CC99;
+    text-decoration: underline;
+}
+BODY, P, H1, H2, H3, H4, H5, H6, LI, TD, DD, DT {
+  font-family: Verdana, AvantGarde, Tahoma, Arial, sans-serif;
+  font-size: 10pt;
+  color: black;
+  padding: 0px;
+  margin: 20px;
+}
+H1, H2, H3, H4 {
+  font-weight: bold
+}
+h1 {
+  font-size: 20px;
+}
+h2 {
+  font-size: 16px;
+}
+code {
+  padding-left: 25px;
+}
+ol li {
+  margin-left: 0;
+}
+.corefile {
+  color: red;
+}
+.removed {
+  text-decoration: line-through;
+}
+.added { color: blue; }
+.changed { color: green; }
+.minspacing li {
+  margin: 0;
+}
+ol li, ul li {
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+ul li ul {
+  padding-left: 0;
+}
+-->
+</style>
+</head>
+
+<body>
+<a name="top" id="top"></a>
+<h1>Minimum Customer Account Information for Zen Cart 1.5.0, 1.5.1, 1.5.2</h1>
+<h3>Version 1.4.0 by lat9</h3>
+<p>Current Support Thread at Zen Cart Forums: <a href="http://www.zen-cart.com/showthread.php?198921-Minimum-Customer-Account-Information-Support-Thread">http://www.zen-cart.com/showthread.php?198921-Minimum-Customer-Account-Information-Support-Thread</a></p>
+
+<h2>Version History:</h2>
+<ul>
+  <li>v1.0.0, 2012-08-09, Initial release.</li>
+  <li>v1.1.0, 2012-09-24:<ul>
+    <li>Merged with Zen Cart&reg; v1.5.1 changes to pick up bugfixes and CSS anti-spam feature for create_account and login pages.</li>
+    <li>Fixed wording on split login page</li>
+  </ul></li>
+  <li>v1.2.0, 2012-10-20:<ul>
+    <li>Restore the already optional "Gender", "Company", "Date of Birth" and "Fax" fields to the minimum customer information collected. Your store's minimum information will now include these values based on the settings in your admin's <em>Configuration-&gt;Customer Details</em>.</li>
+    <li>Moved additional language defines from /languages/YOUR_TEMPLATE/english.php to /languages/english/extra_definitions/YOUR_TEMPLATE/minacct.php.</li>
+    <li>BUGFIX: Modification to login page's on_load_main.js since the State/Zone portion of create_account is no longer there.</li>
+    <li>BUGFIX: The customer's checkout email still included references to shipping and the address information in the email was improperly formatted. Change required to functions_customers.php, to modify the address formatted in a customer's checkout email and to the checkout email template itself.</li> 
+  </ul></li>
+  <li>v1.2.1, 2012-11-19:<ul>
+    <li>BUGFIX: Missing spaces after &lt;?php and/or before ?&gt; directives could result in PHP "syntax error, unexpected end of file" errors.  Changed tpl_checkout_confirmation_default.php, tpl_modules_create_account.php and /YOUR_ADMIN/customers.php.  See <a href="http://www.zen-cart.com/showthread.php?202291-Corrections-for-obscure-quot-syntax-error-unexpected-end-of-file-quot-errors&amp;p=1165106#post1165106" target="_blank">this</a> post for details.</li>
+  </ul></li>
+  <li>v1.2.2, 2012-12-31:<ul>
+    <li>Restore the already optional "Forum Nick Name" field to the minimum customer information collected. This change includes the updates identified by <a href="http://www.zen-cart.com/showthread.php?204139-account_edit-Duplicate-phpbb-email-addresses-allowed" target="_blank">this</a> Zen Cart thread. The following files were <span class="added">added</span>/changed:<ul>
+      <li><span class="added">/includes/classes/class.phpbb.php</span></li>
+      <li>/includes/modules/pages/account_edit/header_php.php</li>
+      <li>/includes/modules/YOUR_TEMPLATE/create_account.php</li>
+      <li>/includes/templates/YOUR_TEMPLATE/templates/tpl_account_edit_default.php</li>
+      <li>/includes/templates/YOUR_TEMPLATE/templates/tpl_modules_create_account.php</li>
+    </ul></li>
+    <li>BUGFIX: After a customer purchase, the "Previous Orders" table in the <em>account</em> page showed "Ship To" instead of "Sold To" and included the unused customer's country.  Added /includes/languages/english/YOUR_TEMPLATE/account.php and changed /includes/templates/YOUR_TEMPLATES/templates/tpl_account_default.php.</li> 
+    <li>BUGFIX: Moved the file /includes/email/email_template_checkout.html to /email/email_template_checkout.html in the distribution zip-file.</li>
+  </ul></li>
+  <li>v1.2.3, 2013-01-25:<ul>
+    <li>BUGFIX: Use case-insensitive compare (strcasecmp) when checking email and email confirmation in /includes/modules/YOUR_TEMPLATE/create_account.php.</li>
+  </ul></li>
+  <li>v1.3.0, 2013-09-27:<ul>
+    <li>Added capability for a store to require the customer's <em>Country</em>.  The following files were <span class="added">added</span> or changed:<ol>
+      <li>/includes/modules/pages/account_edit/header_php.php</li>
+      <li>/includes/modules/YOUR_TEMPLATE/contact_info.php</li>
+      <li>/includes/modules/YOUR_TEMPLATE/create_account.php</li>
+      <li>/includes/templates/YOUR_TEMPLATE/css/stylesheet_contact_info.css</li>
+      <li>/includes/templates/YOUR_TEMPLATE/templates/tpl_account_edit_default.php</li>
+      <li>/includes/templates/YOUR_TEMPLATE/templates/tpl_modules_contact_info.php</li>
+      <li>/includes/templates/YOUR_TEMPLATE/templates/tpl_modules_create_account.php</li>
+      <li><span class="corefile">/YOUR_ADMIN/customers.php</span></li>
+      <li><span class="added">/YOUR_ADMIN/includes/auto_loaders/config.minacct_init.php</span></li>
+      <li><span class="added">/YOUR_ADMIN/includes/init_includes/init_minacct.php</span></li>
+    </ol></li>
+  </ul></li>
+  <li>v1.4.0, 2013-11-29:<ul>
+    <li>Downwardly-compatible file updates to pull in Zen Cart v1.5.2 changes:<ol>
+      <li>/includes/languages/english/YOUR_TEMPLATE/create_account_success.php</li>
+      <li><span class="corefile">/includes/modules/pages/account_edit/header_php.php</span></li>
+      <li><span class="corefile">/YOUR_ADMIN/orders.php</span></li>
+    </ol></li>
+  </ul></li>
+</ul>
+
+<hr />
+<h2>What it does</h2>
+<p>You've got a store that sells <strong>only</strong> virtual products, so none of your products require shipping information.  None of the payment methods you accept require you to send the customer's full address prior to processing, so why make the customer enter their address information for your store?</p>
+<p>This plugin reduces the information gathered during account creation to:</p>
+<ol>
+  <li>Gender, if your admin's <em>Configuration-&gt;Customer Details-&gt;Gender</em> is set to <em>true</em>.</li>
+  <li>First Name</li>
+  <li>Last Name</li>
+  <li>Country, if your admin's <em>Configuration-&gt;Customer Details-&gt;Minimum Account: Include Country?</em> is set to <em>true</em>, for v1.3.0 and later of this plugin.</li>
+  <li>Forum Nick Name, if your admin's <em>Configuration-&gt;My Store-&gt;Enable phpBB linkage?</em> is set to <em>true</em> and the phpbb installation is properly configured.</li>
+  <li>Telephone Number, if your admin's <em>Configuration-&gt;Customer Details-&gt;Telephone Number</em> is set to <em>true</em>.</li>
+  <li>Fax Number, if your admin's <em>Configuration-&gt;Customer Details-&gt;Fax Number</em> is set to <em>true</em>.</li>
+  <li>Company, if your admin's <em>Configuration-&gt;Customer Details-&gt;Company</em> is set to <em>true</em>.</li>
+  <li>Date of Birth, if your admin's <em>Configuration-&gt;Customer Details-&gt;Date of Birth</em> is set to <em>true</em>.</li>
+  <li>Email Address, with its matching Confirm Email Address.</li>
+  <li>Password, with its matching Confirm Password.</li>
+  <li>Newsletter subscription check-box and HTML/Text-only radio buttons</li>
+</ol>
+<p>Since all products in the store are virtual, the checkout_shipping page is bypassed &hellip; reducing the number of steps in your store's checkout to two (checkout_payment and checkout_confirmation).  The invoices generated by your store's admin contain no references to shipping addresses.  There's no "Packing Slip" link on your admin's Customers-&gt;Orders page, since there's nothing to pack!</p>
+<p>Starting with v1.3.0, you can require that the customer choose their host country as part of the account-creation process. A customer's country will default to your store's <em>Configuration-&gt;Customer Details-&gt;Create Account Default Country ID</em> if the country is not required. The country setting is needed for PHP versions 5.4 and later, since the absence of a valid <em>entry_country_id</em> field in your store's <em>address_book</em> table can result in the generation of many myDebug*.log files when a customer places an order!</p>
+<p>Please note that the &quot;Country&quot; field, if enabled, does not show on any invoices generated by your store &mdash; it's only there to provide your store with a demographic.</p>
+<p><strong>Notes:</strong></p>
+<ol>
+  <li>This plugin has been tested and works with PayPal&reg; Express Checkout.  If you use another payment processor, you will need to verify its interactions with this plugin.</li>
+  <li>The first time you sign into your Zen Cart admin after installing v1.3.0 or later, your <em>address_book</em> table will be modified to change any <em>entry_country_id</em> values of 0 to your store's &quot;Create Account Default Country ID&quot;.</li>
+</ol>
+
+<hr />
+<h2>Installation</h2>
+<p>There are <span class="corefile">core-file overwrites</span> in this plugin; you should <strong>always</strong> backup your cart&rsquo;s database and files prior to making any changes.</p>
+<ol>
+  <li>Verify that your products and shipping are set up properly in your database:
+  <ul class="minspacing">
+    <li>Catalog-&gt;Categories/Products-&gt;Edit Product:  <strong>Product is Virtual</strong> set to <em>Yes, Skip Shipping Address</em> for all products in your store.</li>
+	<li>Modules-&gt;Shipping:  Only the <strong>freeshipper</strong> (FREE SHIPPING!) module should be installed.</li>
+  </ul></li>
+  <li>Copy the files to your cart, after renaming the &quot;YOUR_TEMPLATE&quot; directories to match your custom template&rsquo;s name and the &quot;YOUR_ADMIN&quot; directory to match your renamed admin folder; core file overwrites are identified like <span class="corefile">this</span>:
+  <ol class="minspacing">
+    <li class="corefile">/email/email_template_checkout.html</li>
+    <li class="corefile">/includes/classes/class.phpbb.php</li>
+    <li class="corefile">/includes/functions/functions_customers.php</li>
+    <li>/includes/languages/english/extra_definitions/YOUR_TEMPLATE/minacct.php</li>
+    <li>/includes/languages/english/YOUR_TEMPLATE/account.php</li>
+    <li>/includes/languages/english/YOUR_TEMPLATE/checkout_confirmation.php</li>
+    <li>/includes/languages/english/YOUR_TEMPLATE/checkout_payment.php</li>
+    <li>/includes/languages/english/YOUR_TEMPLATE/create_account_success.php</li>
+	  <li>/includes/languages/english/YOUR_TEMPLATE/login.php</li>
+    <li class="corefile">/includes/modules/pages/account_edit/header_php.php</li>
+    <li>/includes/modules/pages/account_history_info/header_php_minacct.php</li>
+    <li>/includes/modules/pages/checkout_confirmation/header_php_minacct.php</li>
+    <li>/includes/modules/pages/checkout_payment/header_php_minacct.php</li>
+    <li class="corefile">/includes/modules/pages/login/on_load_main.js</li>
+    <li>/includes/modules/YOUR_TEMPLATE/contact_info.php</li>
+    <li>/includes/modules/YOUR_TEMPLATE/create_account.php</li>
+    <li>/includes/templates/YOUR_TEMPLATE/css/stylesheet_contact_info.css</li>
+    <li>/includes/templates/YOUR_TEMPLATE/images/icons/ci_accept.png</li>
+    <li>/includes/templates/YOUR_TEMPLATE/images/icons/ci_delete.png</li>
+    <li>/includes/templates/YOUR_TEMPLATE/templates/tpl_account_default.php</li>
+    <li>/includes/templates/YOUR_TEMPLATE/templates/tpl_account_edit_default.php</li>
+    <li>/includes/templates/YOUR_TEMPLATE/templates/tpl_account_history_info_default.php</li>
+    <li>/includes/templates/YOUR_TEMPLATE/templates/tpl_checkout_confirmation_default.php</li>
+    <li>/includes/templates/YOUR_TEMPLATE/templates/tpl_checkout_payment_default.php</li>
+    <li>/includes/templates/YOUR_TEMPLATE/templates/tpl_create_account_success_default.php</li>
+    <li>/includes/templates/YOUR_TEMPLATE/templates/tpl_modules_contact_info.php</li>
+    <li>/includes/templates/YOUR_TEMPLATE/templates/tpl_modules_create_account.php</li>
+    <li>/includes/templates/YOUR_TEMPLATE/templates/tpl_modules_order_totals.php</li>
+    <li class="corefile">/YOUR_ADMIN/customers.php</li>
+    <li class="corefile">/YOUR_ADMIN/invoice.php</li>
+    <li class="corefile">/YOUR_ADMIN/orders.php</li>
+    <li>/YOUR_ADMIN/includes/auto_loaders/config.minacct_init.php</li>
+    <li>/YOUR_ADMIN/includes/init_includes/init_minacct.php</li>
+    <li class="corefile">/YOUR_ADMIN/includes/languages/english/invoice.php</li>
+  </ol></li>
+</ol>
+
+<hr />
+<h2>Un-install</h2>
+<p>Replace the admin and catalog <span class="corefile">core files</span> that were previously overwritten and then delete the new catalog files that were previously copied.  The lines and/or sections that were modified (i.e. added, changed or deleted) are marked by comments using the tag <b>minacct</b>, so you can use your admin's <em>Developers Tool Kit</em> to search for those files.</p>
+<p><strong>Note:</strong> If your store uses the Zen Cart/phpBB linkage, you should review and incorporate the changes identified by <a href="http://www.zen-cart.com/showthread.php?204139-account_edit-Duplicate-phpbb-email-addresses-allowed" target="_blank">this</a> thread if you are uninstalling <em>Minimum Customer Account Information</em>.</p> 
+</body>
+</html>

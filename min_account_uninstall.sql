@@ -1,0 +1,1 @@
+  DELETE FROM configuration WHERE configuration_key="MIN_ACCOUNT_INCLUDE_COUNTRY";

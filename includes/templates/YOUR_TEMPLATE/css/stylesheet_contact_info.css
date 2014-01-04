@@ -1,0 +1,28 @@
+.ciLine {
+  clear: both;
+  margin: 0 auto;
+}
+.ciLabel {
+  font-weight: bold;
+  float: left;
+}
+.ciData {
+  float: right;
+}
+.ciYes, .ciNo {
+  background: url(../images/icons/ci_accept.png) no-repeat;
+  width: 14px;
+  line-height: 16px;
+  float: left;
+  padding-right: 3px;
+}
+.ciNo {
+  background: url(../images/icons/ci_delete.png) no-repeat;
+}
+#checkoutConfirmDefault  .ciLine {
+  width: 75%;
+}
+#checkoutConfirmDefault #checkoutBillto, #accountLinksWrapper {
+  width: 100%;
+  float: none !important;
+}
