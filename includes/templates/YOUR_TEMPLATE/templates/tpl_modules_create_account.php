@@ -140,10 +140,14 @@
   -eof-d-minacct */
 ?>
 <hr />
+<?php
+  if (ACCOUNT_TELEPHONE_NUMBER == 'true') {  //-v1.4.1a
+?>
 <label class="inputLabel" for="telephone"><?php echo ENTRY_TELEPHONE_NUMBER; ?></label>
 <?php echo zen_draw_input_field('telephone', '', zen_set_field_length(TABLE_CUSTOMERS, 'customers_telephone', '40') . ' id="telephone"') . (zen_not_null(ENTRY_TELEPHONE_NUMBER_TEXT) ? '<span class="alert">' . ENTRY_TELEPHONE_NUMBER_TEXT . '</span>': ''); ?>
 <br class="clearBoth" />
 <?php
+  }  //-v1.4.1a
   if (ACCOUNT_FAX_NUMBER == 'true') {
 ?>
 <label class="inputLabel" for="fax"><?php echo ENTRY_FAX_NUMBER; ?></label>
